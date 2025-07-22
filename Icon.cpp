@@ -1,46 +1,100 @@
 #include "Icon.h"
 #include "Display.h"
 
-// 📡 WiFi icon (8x8)
-const uint8_t icon_wifi[8] PROGMEM = {
-  B00011000,
-  B00100100,
-  B01000010,
-  B10000001,
-  B00000000,
-  B00011000,
-  B00011000,
-  B00000000
+// 🧬 MATA splash logo — 16x8 monogram (example)
+const uint8_t mata_logo[128] PROGMEM = {
+  B11100111, B00000000, B00011100, B00111000,
+  B10000101, B00000000, B00100010, B01000100,
+  B11100111, B00000000, B00011100, B01111000,
+  B10000101, B00000000, B00100000, B01000100,
+  B10000101, B00000000, B00100000, B01000100,
+  B10000101, B00000000, B00100000, B01000100,
+  B10000101, B00000000, B00100000, B01000100,
+  B10000101, B00000000, B00100000, B01111100,
+  // ... Fill the rest as needed
 };
 
-// ⚠️ Warning icon (triangle)
-const uint8_t icon_warning[8] PROGMEM = {
+// 📡 LoRa plugin icon (simplified antenna)
+const uint8_t plugin_lora[16] PROGMEM = {
   B00011000,
   B00111100,
   B01111110,
-  B11111111,
-  B11111111,
+  B11011011,
+  B11011011,
+  B01111110,
+  B00111100,
   B00011000,
+  B00011000,
+  B00011000,
+  B00011000,
+  B00111100,
+  B00111100,
+  B01111110,
+  B11111111,
+  B00000000
+};
+
+// 📲 Bluetooth icon
+const uint8_t plugin_bluetooth[16] PROGMEM = {
+  B00000000,
+  B00011000,
+  B00100100,
+  B01001010,
+  B10010001,
+  B01001010,
+  B00100100,
+  B00011000,
+  B00011000,
+  B00100100,
+  B01001010,
+  B10010001,
+  B01001010,
+  B00100100,
   B00011000,
   B00000000
 };
 
-// 🛰️ GPS plugin logo (16x16)
+// 🛰️ GPS plugin icon
 const uint8_t plugin_gps[16] PROGMEM = {
-  // Add actual bitmap pattern here later
+  B00000000,
+  B00111000,
+  B01111100,
+  B11111110,
+  B11111110,
+  B01111100,
+  B00111000,
+  B00000000,
+  B00001000,
+  B00011100,
+  B00101010,
+  B01000001,
+  B01000001,
+  B00101010,
+  B00011100,
+  B00001000
 };
 
-// 📡 IR plugin logo (16x16)
+// 🔦 IR plugin icon (burst symbol)
 const uint8_t plugin_ir[16] PROGMEM = {
-  // Add actual bitmap pattern here later
+  B00000000,
+  B01010101,
+  B00101010,
+  B00011100,
+  B00101010,
+  B01010101,
+  B00000000,
+  B00000000,
+  B00011000,
+  B00111100,
+  B01111110,
+  B00111100,
+  B00011000,
+  B00000000,
+  B00000000,
+  B00000000
 };
 
-// 🧬 Splash logo (e.g., minimal MATA emblem)
-const uint8_t mata_logo[128] PROGMEM = {
-  // Add full bitmap data — can be logo, monogram, waveform
-};
-
-// 📦 Render utility
+// 🧬 Renderer reused
 void drawIcon(const uint8_t* bitmap, int x, int y, int w, int h, uint16_t color) {
   for (int j = 0; j < h; j++) {
     uint8_t row = pgm_read_byte(bitmap + j);
